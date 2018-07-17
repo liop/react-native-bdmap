@@ -2,12 +2,13 @@
  * Created by tdzl2003 on 4/25/16.
  */
 
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {
   requireNativeComponent,
   View,
+  ViewPropTypes,
 } from 'react-native'
-
+import PropTypes from 'prop-types';
 var resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
 const defaultMarkerIcon = require('../assets/icon.png');
 
@@ -15,7 +16,7 @@ class BDMapView extends React.Component {
   state = {};
   static propTypes = {
     /** 继承自View的属性 **/
-    ...View.propTypes,
+    ...ViewPropTypes,
 
     /** 选项 **/
 
@@ -26,27 +27,27 @@ class BDMapView extends React.Component {
     /** 属性 **/
 
     // 当前的视野区域
-    region: React.PropTypes.shape({
-      latitude: React.PropTypes.number.isRequired,
-      longitude: React.PropTypes.number.isRequired,
+    region: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
 
-      latitudeDelta: React.PropTypes.number,
-      longitudeDelta: React.PropTypes.number,
+      latitudeDelta: PropTypes.number,
+      longitudeDelta: PropTypes.number,
     }),
     // 地图开始显示的视野区域.不指定region时才生效.
-    defaultRegion: React.PropTypes.shape({
-      latitude: React.PropTypes.number.isRequired,
-      longitude: React.PropTypes.number.isRequired,
+    defaultRegion: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
 
-      latitudeDelta: React.PropTypes.number,
-      longitudeDelta: React.PropTypes.number,
+      latitudeDelta: PropTypes.number,
+      longitudeDelta: PropTypes.number,
     }),
-    annotations: React.PropTypes.arrayOf(React.PropTypes.shape({
+    annotations: PropTypes.arrayOf(PropTypes.shape({
       /**
        * The location of the annotation.
        */
-      latitude: React.PropTypes.number.isRequired,
-      longitude: React.PropTypes.number.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
 
       // 标注图案
       icon: PropTypes.oneOfType([
@@ -60,40 +61,40 @@ class BDMapView extends React.Component {
       /**
        * Whether the pin should be draggable or not
        */
-      draggable: React.PropTypes.bool,
+      draggable: PropTypes.bool,
 
       /**
        * Event that fires when the annotation drag state changes.
        */
-      onDragStateChange: React.PropTypes.func,
+      onDragStateChange: PropTypes.func,
 
-      onPress: React.PropTypes.func,
+      onPress: PropTypes.func,
 
       /**
        * Event that fires when the annotation gets was tapped by the user
        * and the callout view was displayed.
        */
-      onFocus: React.PropTypes.func,
+      onFocus: PropTypes.func,
 
       /**
        * Event that fires when another annotation or the mapview itself
        * was tapped and a previously shown annotation will be closed.
        */
-      onBlur: React.PropTypes.func,
+      onBlur: PropTypes.func,
 
       /**
        * Annotation title/subtile.
        */
-      title: React.PropTypes.string,
-      subtitle: React.PropTypes.string,
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
 
       /**
        * annotation id
        */
-      id: React.PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     })),
 
-    traceData: React.PropTypes.arrayOf(React.PropTypes.arrayOf(React.PropTypes.number)),
+    traceData: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
 
     // 事件
     onLoad: PropTypes.func,
